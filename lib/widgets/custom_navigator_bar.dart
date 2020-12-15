@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 class CustomNavigatorBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final currentIndex = 0;
+
     return BottomNavigationBar(
-      currentIndex: 0,
+      currentIndex: currentIndex,
         elevation: 10,
         backgroundColor: Colors.blueGrey,
         items: [
