@@ -41,5 +41,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSCameraUsageDescription</key>
+    <string>Necesitamos permisos para poder escanear los códigos QR</string>
 </dict>
 </plist>
