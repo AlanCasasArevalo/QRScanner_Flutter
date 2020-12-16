@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:qrscanner/pages/directions_page.dart';
 import 'package:qrscanner/pages/history_map_page.dart';
+import 'package:qrscanner/providers/ui_provider.dart';
 import 'package:qrscanner/widgets/custom_navigator_bar.dart';
 import 'package:qrscanner/widgets/custom_scan_buton.dart';
 
@@ -27,7 +29,10 @@ class HomePage extends StatelessWidget {
 class _HomePageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final currentIndex = 0;
+
+    final uiProvider = Provider.of<UIProvider>(context);
+    final currentIndex = uiProvider.selectedMenuOption;
+
     switch (currentIndex) {
       case 0:
         return HistoryMapPage();
