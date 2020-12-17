@@ -56,4 +56,10 @@ class DBProvider {
     return res;
   }
 
+  Future<int> addNewScan (ScanModel newScan) async {
+    final db = await database;
+    final res = db.insert('QRSScanner', newScan.toJson());
+    return res;
+  }
+
 }
