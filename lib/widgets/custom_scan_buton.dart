@@ -13,7 +13,7 @@ class CustomScanButton extends StatelessWidget {
         child: Icon(Icons.filter_center_focus),
         onPressed: () async {
           final barcodeScanRes = 'https://developer.android.com/studio/debug/dev-options';
-          // scanListProvider.addNewElement(barcodeScanRes);
+          scanListProvider.addNewElement(barcodeScanRes);
           scanListProvider.addNewElement('geo:15.44,23.44');
         });
   }
