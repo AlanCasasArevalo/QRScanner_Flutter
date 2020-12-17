@@ -89,7 +89,30 @@ class DBProvider {
   Future<int> updateElement (ScanModel scanToUpdate) async {
     final db = await database;
     final res = db.update('QRSScanner', scanToUpdate.toJson(), where: 'id = ?', whereArgs: [scanToUpdate.id]);
-    // Res es el id del producto insertado.
+    // Res es el id del producto actualizado.
+    return res;
+  }
+
+  Future<int> deleteElementById (int id) async {
+    final db = await database;
+    final res = db.delete('QRSScanner', where: 'id = ?', whereArgs: [id]);
+    // Res es el resultado de borrar todos los elementos
+    return res;
+  }
+
+  Future<int> deleteAllElement () async {
+    final db = await database;
+    final res = db.delete('QRSScanner');
+    // Res es el resultado de borrar todos los elementos
+    return res;
+  }
+
+  Future<int> deleteAllElementRaw () async {
+    final db = await database;
+    final res = db.delete('''
+      DELETE FROM QRSScanner
+    ''');
+    // Res es el resultado de borrar todos los elementos
     return res;
   }
 
