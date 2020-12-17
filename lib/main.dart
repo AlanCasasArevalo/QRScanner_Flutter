@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primaryColor: Colors.deepPurple,
           floatingActionButtonTheme: FloatingActionButtonThemeData(
-            backgroundColor: Colors.deepPurple
+            backgroundColor: Colors.deepPurple,
           )
         ),
       ),
