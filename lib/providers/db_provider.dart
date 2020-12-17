@@ -86,4 +86,11 @@ class DBProvider {
     return res.isNotEmpty ? scans : [];
   }
 
+  Future<int> updateElement (ScanModel scanToUpdate) async {
+    final db = await database;
+    final res = db.update('QRSScanner', scanToUpdate.toJson(), where: 'id = ?', whereArgs: [scanToUpdate.id]);
+    // Res es el id del producto insertado.
+    return res;
+  }
+
 }
