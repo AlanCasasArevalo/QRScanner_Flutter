@@ -56,18 +56,26 @@ class DBProvider {
     return res;
   }
 
-  Future<int> addNewScan (ScanModel newScan) async {
+  Future<int> addNewElement (ScanModel newScan) async {
     final db = await database;
     final res = db.insert('QRSScanner', newScan.toJson());
     // Res es el id del producto insertado.
     return res;
   }
 
-  Future<ScanModel> getScanById (int id) async {
+  Future<ScanModel> getElementById (int id) async {
     final db = await database;
     final res = await db.query('QRSScanner', where: 'id = ?', whereArgs: [id]);
     ScanModel scanMapped = ScanModel.fromJson(res.first);
     return res.isNotEmpty ? scanMapped : null;
+  }
+
+  Future<List<ScanModel>> getAllElements () async {
+    final db = await database;
+    final res = await db.query('QRSScanner');
+    List<ScanModel> scans = res.map((scan) => ScanModel.fromJson(scan)).toList();
+    print(scans);
+    return res.isNotEmpty ? scans : null;
   }
 
 }
