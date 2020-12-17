@@ -17,6 +17,7 @@ class _MapDetailPageState extends State<MapDetailPage> {
 
     final ScanModel _scanModel = ModalRoute.of(context).settings.arguments;
 
+    /************************************    Posición de la camara     ************************************/
     final CameraPosition _initialPoint = CameraPosition(
       target: _scanModel.getCoordinates(),
       zoom: 17,
@@ -24,13 +25,23 @@ class _MapDetailPageState extends State<MapDetailPage> {
       bearing: 20
     );
 
+    /************************************    Marcadores     ************************************/
+    Set<Marker> markers = Set<Marker>();
+    
+    markers.add(Marker(
+      markerId: MarkerId('geo-location'),
+      position: _scanModel.getCoordinates()
+    ));
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Mapa'),
       ),
       body: GoogleMap(
+        myLocationEnabled: true,
         mapType: MapType.normal,
         initialCameraPosition: _initialPoint,
+        markers: markers,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
