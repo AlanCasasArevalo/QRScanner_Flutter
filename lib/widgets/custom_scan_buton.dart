@@ -9,9 +9,7 @@ class CustomScanButton extends StatelessWidget {
         focusColor: Colors.blueAccent,
         child: Icon(Icons.filter_center_focus),
         onPressed: () async {
-          String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-              '#3D8BEF', 'Cancelar', false, ScanMode.QR);
-
+          final barcodeScanRes = 'https://developer.android.com/studio/debug/dev-options';
           print(barcodeScanRes);
         });
   }
