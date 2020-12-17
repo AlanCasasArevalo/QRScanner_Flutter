@@ -4,6 +4,9 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
+import 'package:qrscanner/models/scan_model.dart';
+export 'package:qrscanner/models/scan_model.dart';
+
 class DBProvider {
   static Database _database;
   static final DBProvider db = DBProvider._();
@@ -36,7 +39,21 @@ class DBProvider {
               value TEXT
             )
           ''');
-    }
-    );
+    });
   }
+
+  Future<int> addNewScanRaw (ScanModel newScan) async {
+    final id = newScan.id;
+    final type = newScan.type;
+    final value = newScan.value;
+
+    final db = await database;
+    final res = db.rawInsert('''
+      INSERT INTO QRSScanner(id, type, value)
+        VALUES($id, '$type', '$value')
+    ''');
+
+    return res;
+  }
+
 }
