@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qrscanner/pages/MapPage.dart';
+import 'package:qrscanner/pages/MapDetailPage.dart';
 import 'package:qrscanner/pages/home_page.dart';
 import 'package:provider/provider.dart';
 import 'package:qrscanner/providers/scan_list_provider.dart';
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         initialRoute: 'home_page',
         routes: {
           'home_page' : (BuildContext context) => HomePage(),
-          'map_page' : (BuildContext context) => MapPage(),
+          'map_page_detail' : (BuildContext context) => MapDetailPage(),
         },
         theme: ThemeData(
           primaryColor: Colors.deepPurple,

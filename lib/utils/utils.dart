@@ -13,7 +13,7 @@ launchURL(BuildContext context, ScanModel scan) async {
       throw 'Could not launch $url';
     }
   } else {
-    Navigator.pushNamed(context, 'map_page', arguments: scan);
+    Navigator.pushNamed(context, 'map_page_detail', arguments: scan);
   }
 
 }
