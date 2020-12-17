@@ -18,17 +18,18 @@ class _MapDetailPageState extends State<MapDetailPage> {
     final ScanModel _scanModel = ModalRoute.of(context).settings.arguments;
 
     final CameraPosition _initialPoint = CameraPosition(
-      target: LatLng(37.42796133580664, -122.085749655962),
-      zoom: 14.4746,
+      target: _scanModel.getCoordinates(),
+      zoom: 17,
+      tilt: 50,
+      bearing: 20
     );
-
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Mapa'),
       ),
       body: GoogleMap(
-        mapType: MapType.hybrid,
+        mapType: MapType.normal,
         initialCameraPosition: _initialPoint,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
