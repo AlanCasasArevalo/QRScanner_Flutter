@@ -74,8 +74,16 @@ class DBProvider {
     final db = await database;
     final res = await db.query('QRSScanner');
     List<ScanModel> scans = res.map((scan) => ScanModel.fromJson(scan)).toList();
-    print(scans);
-    return res.isNotEmpty ? scans : null;
+    return res.isNotEmpty ? scans : [];
+  }
+
+  Future<List<ScanModel>> getElementsByTypeRaw (String type) async {
+    final db = await database;
+    final res = await db.rawQuery('''
+      SELECT * FROM QRSScanner WHERE type = '$type'
+    ''');
+    List<ScanModel> scans = res.map((scan) => ScanModel.fromJson(scan)).toList();
+    return res.isNotEmpty ? scans : [];
   }
 
 }
